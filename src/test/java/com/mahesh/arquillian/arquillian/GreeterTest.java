@@ -17,7 +17,7 @@ public class GreeterTest {
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
             .addClasses(Greeter.class,PhraseBuilder.class)
-            .addAsResource("test/resources/arquillian.xml")
+            .addAsResource("arquillian.xml")
             .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
     @Inject
@@ -25,6 +25,7 @@ public class GreeterTest {
 
     @Test
     public void should_create_greeting() {
+    	System.out.println("Running test....");
         Assert.assertEquals("Hello, Earthling!",
             greeter.createGreeting("Earthling"));
         greeter.greet(System.out, "Earthling");
